@@ -39,7 +39,7 @@ To validate map keys, you can use ``keys`` to specify that the following validat
     :caption: At least one name/age pair must be  specified. Names must be > 3 characters. Ages must be >= 18
 
     type Config struct {
-        Ages map[string]int `desc:"Names and ages map" validate="required,keys,gt=3,endkeys,dive,gte=18"`
+        Ages map[string]int `desc:"Names and ages map" validate:"required,keys,gt=3,endkeys,dive,gte=18"`
     }
 
 Network Validators
