@@ -290,6 +290,7 @@ Options
         NoRecover         bool                // Don't recover from panic
         ShowInternalFlags bool                // Show hidden internal flags
         NoShortHelp       bool                // Don't add "h" as a short help flag
+        RequireNoDefaults bool                // Require any fields that don't have a default value
     }
 
 If not specified, the defaults are:
@@ -304,6 +305,7 @@ If not specified, the defaults are:
         NoRecover:         false,
         ShowInternalFlags: false,
         NoShortHelp:       false,
+        RequireNoDefaults: false
     }
 
 
@@ -439,6 +441,34 @@ Do not add ``-h`` as a short flag for help. This may be useful if there is a fie
     user@host ~$ myapp -h 2h
     2h0m0s
 
+
+RequireNoDefaults
+----------------------
+Make all fields that do not have a default value required.
+
+.. code-block:: go
+
+    type Config struct {
+        HangTime time.Duration `default:"1m"`
+        JumpTime time.Duration
+        Name     string
+    }
+
+    func main() {
+
+        conf := co.Configure[Config](&co.Options{
+            RequireNoDefaults: true,
+        })
+
+        ...
+    }
+
+
+.. code-block:: shell
+    
+    user@host ~$ myapp --jump_time 10s
+    error parsing configuration: validation failed; name is required
+    exit status 1
 
 Tags
 =======================
