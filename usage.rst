@@ -467,7 +467,7 @@ Make all fields that do not have a default value required.
 .. code-block:: shell
     
     user@host ~$ myapp --jump_time 10s
-    error parsing configuration: validation failed; name is required
+    error parsing configuration: name is required
     exit status 1
 
 Tags
@@ -494,10 +494,5 @@ The following struct tags are used by Configurature:
       - Makes Configurature completely ignore the struct field
     * - ``enum:"x,y,z"``
       - Only the values ``x``, ``y``, or ``z`` are valid for this field. This will automatically add the values to the help text of the field.
-    * - ``validate:"..."``
-      - Specifies `validators <#validators>`_ for this field separated by ``,``
-
-.. note::
-    
-    Looking for a tag to indicate a field is required?
-    Use the ``required`` or ``not_blank`` :doc:`validator </validators>`.
+    * - ``required:""``
+      - Makes the field required.

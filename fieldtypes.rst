@@ -126,7 +126,7 @@ The struct field type can be used in a Configurature struct like so:
        ProductImage ThumbnailFile `desc:"Path to thumbnail for product"`
    }
 
-This is just an example. In most cases a validator or a ``string`` field with an ``enum:"..."``
+This is just an example. In most cases a ``string`` field with an ``enum:"..."``
 tag will satisfy the use case. However,
 if a Configurature struct field uses an app specific type, you will need
 to define a custom type, use a

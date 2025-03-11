@@ -61,16 +61,6 @@ Basic Example
         --listen_ip ip       IP address on which to listen (default 127.0.0.1)
         --listen_port uint   port on which to listen (default 8080) 
 
-.. code-block:: shell
-    :caption: validation
-
-    $ go run main.go --listen_ip=5
-    invalid argument "5" for "--listen_ip" flag: failed to parse IP: "5"
-    Command usage:
-        -h, --help           show help and exit
-        --listen_ip ip       IP address on which to listen (default 127.0.0.1)
-        --listen_port uint   port on which to listen (default 8080) 
-
 Installation
 =============
 
