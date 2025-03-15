@@ -123,7 +123,7 @@ The struct field type can be used in a Configurature struct like so:
 .. code-block:: go
 
    type Config struct {
-       ProductImage ThumbnailFile `desc:"Path to thumbnail for product"`
+       ProductImage ThumbnailFile `help:"Path to thumbnail for product"`
    }
 
 This is just an example. In most cases a ``string`` field with an ``enum:"..."``
@@ -160,7 +160,7 @@ The struct field type can be used in a Configurature struct like so:
 .. code-block:: go
 
    type Config struct {
-       ProductImages []ThumbnailFile `desc:"Paths to thumbnails for product"`
+       ProductImages []ThumbnailFile `help:"Paths to thumbnails for product"`
    }
 
 Slice types are specified in CSV format for the CLI and environment variables.
@@ -228,7 +228,7 @@ Defining this in a config struct looks like
     :caption: Define config
 
     type Config struct {
-        LogLevel slog.Level `desc:"Log level of app" default:"info"`
+        LogLevel slog.Level `help:"Log level of app" default:"info"`
     }
 
 .. code-block:: shell
@@ -272,8 +272,8 @@ This can be specified on a config struct using the ``Color`` type.
     :caption: Define config
 
     type Config struct {
-        Background Color `desc:"Color of the background" default:"red"`
-        Text       Color `desc:"Color of text" default:"blue"`
+        Background Color `help:"Color of the background" default:"red"`
+        Text       Color `help:"Color of text" default:"blue"`
     }
 
 
@@ -311,7 +311,7 @@ Delay Example
     :caption: Define config
 
     type Config struct {
-        WaitTime   Delay `desc:"Delay time" default:"medium"`
+        WaitTime   Delay `help:"Delay time" default:"medium"`
     }
 
 Type Name Example
@@ -351,7 +351,7 @@ Type Name Example
     :caption: Define config
 
     type Config struct {
-        DeployTo  DeploymentClusterIdentifier `desc:"Cluster in which to deploy" default:"dev"`
+        DeployTo  DeploymentClusterIdentifier `help:"Cluster in which to deploy" default:"dev"`
     }
 
 .. code-block:: shell

@@ -54,7 +54,7 @@ distinct fields in a parent struct.
 
    // main.go
    type Config struct {
-       ConfigFile co.ConfigFile `desc:"configuration file" short:"c"`
+       ConfigFile co.ConfigFile `help:"configuration file" short:"c"`
        Logging    log.Config
        Server     server.Config
    }
@@ -63,8 +63,8 @@ distinct fields in a parent struct.
 
    // server.go
    type Config struct {
-       ListenIP   net.IP `desc:"IP address on which to listen" default:"127.0.0.1"`
-       ListenPort uint   `desc:"port on which to listen" default:"8080"`
+       ListenIP   net.IP `help:"IP address on which to listen" default:"127.0.0.1"`
+       ListenPort uint   `help:"port on which to listen" default:"8080"`
        IPC        ipc.Config
        RPC        rpc.Config
    }
@@ -105,7 +105,7 @@ You can name sub configs and even give them empty names.
 
    // main.go
    type Config struct {
-       ConfigFile co.ConfigFile `desc:"configuration file" short:"c"`
+       ConfigFile co.ConfigFile `help:"configuration file" short:"c"`
        Logging    log.Config
        Server     server.Config `name:""`
    }
@@ -114,8 +114,8 @@ You can name sub configs and even give them empty names.
 
    // server.go
    type Config struct {
-       ListenIP   net.IP     `desc:"IP address on which to listen" default:"127.0.0.1"`
-       ListenPort uint       `desc:"port on which to listen" default:"8080"`
+       ListenIP   net.IP     `help:"IP address on which to listen" default:"127.0.0.1"`
+       ListenPort uint       `help:"port on which to listen" default:"8080"`
        IPC        ipc.Config `name:"other"`
        RPC        rpc.Config
    }
@@ -135,7 +135,7 @@ You can also include other config structs as anonymous fields.
 
    // main.go
    type Config struct {
-       ConfigFile co.ConfigFile `desc:"configuration file" short:"c"`
+       ConfigFile co.ConfigFile `help:"configuration file" short:"c"`
        log.LogConfig
        server.ServerConfig
    }
@@ -144,8 +144,8 @@ You can also include other config structs as anonymous fields.
 
    // server.go
    type ServerConfig struct {
-       ListenIP   net.IP `desc:"IP address on which to listen" default:"127.0.0.1"`
-       ListenPort uint   `desc:"port on which to listen" default:"8080"`
+       ListenIP   net.IP `help:"IP address on which to listen" default:"127.0.0.1"`
+       ListenPort uint   `help:"port on which to listen" default:"8080"`
        ipc.IPCConfig
        rpc.RPCConfig
    }
@@ -174,7 +174,7 @@ Configuration structs included anonymously result in flat value
 specification. E.g. ``SocketFile`` in the ``ipc`` configuration becomes
 a ``--socket_file`` flag, ``APP_SOCKET_FILE`` environment variable. You
 may want to rename the field name in this case to ``IpcSocketFile`` or
-just let the field’s ``desc`` provide context for what “socket file”
+just let the field’s ``help`` provide context for what “socket file”
 refers to.
 
 Mixed
@@ -216,8 +216,8 @@ type of config you want to retrieve from the top-level configuration.
    // buried_component.go
 
    type Config struct {
-       MyInt int    `desc:"integer config item"`
-       MyStr string `desc:"string config item"`
+       MyInt int    `help:"integer config item"`
+       MyStr string `help:"string config item"`
    }
 
    // buried_component needs its Config struct

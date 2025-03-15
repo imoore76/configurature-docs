@@ -20,8 +20,8 @@ Declare your configuration and run ``Configure[]()``
     )
 
     type AppConfig struct {
-        ListenIP   net.IP `desc:"IP address on which to listen" default:"127.0.0.1"`
-        ListenPort uint   `desc:"port on which to listen" default:"8080"`
+        ListenIP   net.IP `help:"IP address on which to listen" default:"127.0.0.1"`
+        ListenPort uint   `help:"port on which to listen" default:"8080"`
     }
 
     func main() {
@@ -32,7 +32,7 @@ Declare your configuration and run ``Configure[]()``
         fmt.Printf("Port: %d\n", conf.ListenPort)
     }
 
-The tags ``desc`` add descriptions to the fields and are required.
+The tags ``help`` provide help text for the fields.
 ``default`` specifies a default value.
 
 .. seealso::
@@ -68,8 +68,8 @@ if no other value is specified.
 .. code-block:: go
 
     type AppConfig struct {
-        ListenIP   net.IP `desc:"IP address on which to listen" default:"127.0.0.1"`
-        ListenPort uint   `desc:"port on which to listen" default:"8080"`
+        ListenIP   net.IP `help:"IP address on which to listen" default:"127.0.0.1"`
+        ListenPort uint   `help:"port on which to listen" default:"8080"`
     }
 
 
@@ -90,8 +90,8 @@ by adding a ``short:"x"`` tag.
 .. code-block:: go
 
     type AppConfig struct {
-        ListenIP   net.IP `desc:"IP address on which to listen" short:"i" default:"127.0.0.1"`
-        ListenPort uint   `desc:"port on which to listen" default:"8080"`
+        ListenIP   net.IP `help:"IP address on which to listen" short:"i" default:"127.0.0.1"`
+        ListenPort uint   `help:"port on which to listen" default:"8080"`
     }
 
 .. code-block:: shell
@@ -112,8 +112,8 @@ prefixed with the ``EnvPrefix`` option.
 .. code-block:: go
 
     type AppConfig struct {
-        ListenIP   net.IP `desc:"IP address on which to listen" short:"i" default:"127.0.0.1"`
-        ListenPort uint   `desc:"port on which to listen" default:"8080"`
+        ListenIP   net.IP `help:"IP address on which to listen" short:"i" default:"127.0.0.1"`
+        ListenPort uint   `help:"port on which to listen" default:"8080"`
     }
 
     conf := co.Configure[AppConfig](&co.Options{
@@ -168,9 +168,9 @@ configuration struct. ``ConfigFile`` is part of the ``configurature`` package.
 .. code-block:: go
 
     type AppConfig struct {
-        ListenIP   net.IP        `desc:"IP address on which to listen" default:"127.0.0.1"`
-        ListenPort uint          `desc:"port on which to listen" default:"8080"`
-        Conf       co.ConfigFile `desc:"configuration file" short:"c"`
+        ListenIP   net.IP        `help:"IP address on which to listen" default:"127.0.0.1"`
+        ListenPort uint          `help:"port on which to listen" default:"8080"`
+        Conf       co.ConfigFile `help:"configuration file" short:"c"`
     }
 
 The example above also adds a ``short`` tag to specify a short version of the option.
@@ -336,8 +336,8 @@ value if no value is specified and no default is set.
 .. code-block:: go
 
     type Config struct {
-        MaxConns   *int `desc:"Max number of connections"`
-        ListenPort *int `desc:"Port on which to listen" default:"8080"`
+        MaxConns   *int `help:"Max number of connections"`
+        ListenPort *int `help:"Port on which to listen" default:"8080"`
     }
 
     conf := co.Configure[Config](&co.Opts{
@@ -419,7 +419,7 @@ Do not add ``-h`` as a short flag for help. This may be useful if there is a fie
 .. code-block:: go
 
     type Config struct {
-        HangTime time.Duration `desc:"Time to hang" short:"h" default:"1m"`
+        HangTime time.Duration `help:"Time to hang" short:"h" default:"1m"`
     }
 
     func main() {
@@ -480,8 +480,8 @@ The following struct tags are used by Configurature:
 
     * - Tag
       - Description
-    * - ``desc:"..."``
-      - Provides a description for the field shown in the ``Usage`` message
+    * - ``help:"..."``
+      - Provides help text for the field shown in the ``Usage`` message
     * - ``default:"..."``
       - Specifies the default value for the field
     * - ``short:"..."``

@@ -23,7 +23,6 @@ Contents
     usage
     combining
     fieldtypes
-    validators
     contributing
     license
 

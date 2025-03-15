@@ -25,8 +25,8 @@ Basic Example
     )
 
     type AppConfig struct {
-        ListenIP   net.IP `desc:"IP address on which to listen" default:"127.0.0.1"`
-        ListenPort uint   `desc:"port on which to listen" default:"8080"`
+        ListenIP   net.IP `help:"IP address on which to listen" default:"127.0.0.1"`
+        ListenPort uint   `help:"port on which to listen" default:"8080"`
     }
 
     func main() {
